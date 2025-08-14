@@ -151,7 +151,6 @@ void main() {
 
         //Se usa indice - 1 porque normalmente en las listas los índices empiezan en 0,
         //pero tal vez el usuario está eligiendo un libro con numeración que empieza en 1.
-        // Ejemplo:
 
         print("Libro actualizado. ");
         print('');
