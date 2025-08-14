@@ -80,7 +80,17 @@ void main() {
         break;
       case 2:
         //Listamos los libros registrados
-        print(libros.length == 0 ? 'No hay libros registrados.' : libros);
+        // print(libros.length == 0 ? 'No hay libros registrados.' : libros);
+        if (libros.length == 0) {
+          print('No hay libros registrados');
+          print('');
+          break;
+        }
+        for (var i = 0; i < libros.length; i++) {
+          print(
+            "${i + 1}. ${libros[i]['titulo']} - ${libros[i]['autor']} (${libros[i]['year']})",
+          );
+        }
         print('');
 
         break;
@@ -99,7 +109,7 @@ void main() {
         libros.length es la cantidad total de elementos en la lista libros.
         Si i llega a ser igual o mayor a libros.length, el bucle se detiene.
         3. ++1 Después de cada vuelta, se incrementa i en 1.
-         */
+        */
 
         for (var i = 0; i < libros.length; i++) {
           print(
@@ -116,45 +126,32 @@ void main() {
           break;
         }
 
-        String? titulo;
-        do {
-          print("Nuevo título: ");
-          titulo = stdin.readLineSync();
+        print("Nuevo título: (Enter para mantener el actual): ");
+        String? titulo = stdin.readLineSync();
 
-          if (titulo == null || titulo.trim().isEmpty) {
-            print('No pueden ir campos vacíos.');
-            print('');
-          }
-        } while (titulo == null || titulo.trim().isEmpty);
+        if (titulo != null && titulo.trim().isNotEmpty) {
+          libros[indice - 1]['titulo'] = titulo.trim();
+        }
 
-        String? autor;
-        do {
-          print("Nuevo autor: ");
-          autor = stdin.readLineSync();
+        print("Nuevo autor: (Enter para mantener el actual): ");
+        String? autor = stdin.readLineSync();
 
-          if (autor == null || autor.trim().isEmpty) {
-            print('No pueden ir campos vacíos.');
-            print('');
-          }
-        } while (autor == null || autor.trim().isEmpty);
+        if (autor != null && autor.trim().isNotEmpty) {
+          libros[indice - 1]['autor'] = autor.trim();
+        }
 
-        String? year;
-        do {
-          print("Nuevo año: ");
-          year = stdin.readLineSync();
+        print("Nuevo año: (Enter para mantener el actual): ");
+        String? year = stdin.readLineSync();
 
-          if (year == null || year.trim().isEmpty) {
-            print('No pueden ir campos vacíos.');
-            print('');
-          }
-        } while (year == null || year.trim().isEmpty);
+        if (year != null && year.trim().isNotEmpty) {
+          libros[indice - 1]['year'] = year.trim();
+        }
 
-        //Se usa indice - 1 porque normalmente en las listas los índices empiezan en 0, 
+        //Se usa indice - 1 porque normalmente en las listas los índices empiezan en 0,
         //pero tal vez el usuario está eligiendo un libro con numeración que empieza en 1.
         // Ejemplo:
 
         //Si el usuario dice indice = 2 (quiere el segundo libro), en la lista realmente es la posición 1.
-        libros[indice - 1] = {'titulo': titulo, 'autor': autor, 'year': year};
 
         print("Libro actualizado. ");
         print('');
