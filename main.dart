@@ -130,6 +130,8 @@ void main() {
         String? titulo = stdin.readLineSync();
 
         if (titulo != null && titulo.trim().isNotEmpty) {
+          //Se le resta 1 porque indice empieza en 1 (humano) y las listas en Dart son indexadas desde 0.
+          //Después se accede a la clave titulo, y se guarda la variable en el mapa y se eliminan los espacios con .trim()
           libros[indice - 1]['titulo'] = titulo.trim();
         }
 
@@ -150,8 +152,6 @@ void main() {
         //Se usa indice - 1 porque normalmente en las listas los índices empiezan en 0,
         //pero tal vez el usuario está eligiendo un libro con numeración que empieza en 1.
         // Ejemplo:
-
-        //Si el usuario dice indice = 2 (quiere el segundo libro), en la lista realmente es la posición 1.
 
         print("Libro actualizado. ");
         print('');
